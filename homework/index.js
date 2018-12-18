@@ -53,9 +53,9 @@
       href: repository.html_url,
       target: '_blank',
     });
-    addRow(tbody, 'Description :', repository.description)
-    addRow(tbody, 'Forks :', repository.forks)
-    addRow(tbody, 'Updated :', repository.updated_at)
+    addRow(tbody, 'Description :', repository.description);
+    addRow(tbody, 'Forks :', repository.forks);
+    addRow(tbody, 'Updated :', repository.updated_at);
   }
 
   function renderRepoContributors(contributors, rightContainer) {
