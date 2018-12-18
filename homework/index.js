@@ -31,45 +31,31 @@
     return elem;
   }
 
+  function addRow(parent, labelText, rowValue) {
+    const row = createAndAppend('tr', parent);
+    createAndAppend('td', row, {
+      class: 'label',
+      text: labelText,
+    });
+    createAndAppend('td', row, {
+      text: rowValue,
+    });
+    return row;
+  }
+
   function renderRepositoryInfo(repository, leftContainer) {
     const table = createAndAppend('table', leftContainer);
     const tbody = createAndAppend('tbody', table);
-    const firstRow = createAndAppend('tr', tbody);
-    createAndAppend('td', firstRow, {
-      class: 'label',
-      text: 'Repository : ',
-    });
-    const td2 = createAndAppend('td', firstRow);
-    createAndAppend('a', td2, {
+
+    const firstRow = addRow(tbody, 'Repository : ', '');
+    createAndAppend('a', firstRow.children[1], {
       text: repository.name,
       href: repository.html_url,
       target: '_blank',
     });
-
-    const secondRow = createAndAppend('tr', tbody);
-    createAndAppend('td', secondRow, {
-      class: 'label',
-      text: 'Description :',
-    });
-    createAndAppend('td', secondRow, {
-      text: repository.description,
-    });
-    const thirdRow = createAndAppend('tr', tbody);
-    createAndAppend('td', thirdRow, {
-      class: 'label',
-      text: 'Forks :',
-    });
-    createAndAppend('td', thirdRow, {
-      text: repository.forks,
-    });
-    const forthRow = createAndAppend('tr', tbody);
-    createAndAppend('td', forthRow, {
-      class: 'label',
-      text: 'Updated :',
-    });
-    createAndAppend('td', forthRow, {
-      text: new Date(repository.updated_at),
-    });
+    addRow(tbody, 'Description :', repository.description)
+    addRow(tbody, 'Forks :', repository.forks)
+    addRow(tbody, 'Updated :', repository.updated_at)
   }
 
   function renderRepoContributors(contributors, rightContainer) {
