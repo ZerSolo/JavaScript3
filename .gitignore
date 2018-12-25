@@ -59,3 +59,15 @@ typings/
 
 .netlify
 dist/
+
+package-lock.json
+
+
+package.json
+
+
+.travis.yml
+
+
+classes.js
+
